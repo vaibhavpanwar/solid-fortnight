@@ -50,24 +50,20 @@ const Home = () => {
 
   return (
     <div className="testimonials-main-container">
-      {loading && <p>Loading..</p>}
       <div className="testimonials-inside-container">
         <p className="testimonials-heading">TESTIMONIALS</p>
         {activeTestimonial && (
-          <TestimonialCard testimonial={activeTestimonial} />
+          <TestimonialCard loading={loading} testimonial={activeTestimonial} />
         )}
         <div className="testimonials-navigator">
           <div className="images-navigation">
-            {/* <img
-              src={
-                "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2ZpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              }
-            /> */}
+            {loading && <p>Loading...</p>}
             {testimonials?.map((item) => (
               <img
                 onClick={() => setCurrentTestimonial(item)}
                 key={item?.id}
                 src={item?.avatar}
+                alt={"testimonial"}
                 className={`${
                   item?.id === activeTestimonial?.id ? "border-img" : ""
                 }`}
@@ -76,10 +72,10 @@ const Home = () => {
           </div>
           <div className="buttons-navigation">
             <button className="arrow" onClick={prevHandler}>
-              <img src={arrow} />
+              <img alt={"prev"} src={arrow} />
             </button>
             <button onClick={nextHandler} className="arrow next">
-              <img src={arrow} />
+              <img alt={"prev"} src={arrow} />
             </button>
           </div>
         </div>
